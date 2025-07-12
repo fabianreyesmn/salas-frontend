@@ -3,7 +3,9 @@
 
   <a class="btn btn-primary mb-3" routerLink="/salas/crear">Crear Sala</a>
 
+  <!-- Tabla para mostrar las salas -->
   <table class="table table-striped">
+    <!-- Encabezados de la tabla -->
     <thead>
       <tr>
         <th>Nombre</th>
@@ -11,6 +13,7 @@
         <th>Capacidad</th>
       </tr>
     </thead>
+    <!-- Cuerpo de la tabla -->
     <tbody>
       <tr *ngFor="let sala of salas()">
         <td>{{ sala.nombre }}</td>

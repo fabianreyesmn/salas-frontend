@@ -2,6 +2,7 @@ import { Component, inject, OnInit, Signal, WritableSignal, signal } from '@angu
 import { CommonModule } from '@angular/common';
 import { SalasService } from '../../../core/services/salas';
 
+// Componente para listar las salas
 @Component({
   selector: 'app-listar',
   standalone: true,
@@ -9,6 +10,7 @@ import { SalasService } from '../../../core/services/salas';
   templateUrl: './listar.html',
   styleUrls: ['./listar.scss']
 })
+// Clase que implementa OnInit para cargar las salas al iniciar
 export class Listar implements OnInit {
   private salasService = inject(SalasService);
 
@@ -18,6 +20,7 @@ export class Listar implements OnInit {
     this.cargarSalas();
   }
 
+  // Método para cargar las salas desde el servicio
   async cargarSalas() {
     try {
       const res = await this.salasService.getSalas();
