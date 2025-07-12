@@ -1,1 +1,22 @@
-<p>listar works!</p>
+<div class="container mt-4">
+  <h2>Salas de Juntas</h2>
+
+  <a class="btn btn-primary mb-3" routerLink="/salas/crear">Crear Sala</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Ubicación</th>
+        <th>Capacidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sala of salas()">
+        <td>{{ sala.nombre }}</td>
+        <td>{{ sala.ubicacion }}</td>
+        <td>{{ sala.capacidad }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
