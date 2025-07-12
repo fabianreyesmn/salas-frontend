@@ -13,4 +13,8 @@ export class ReservasService {
   liberarReserva(id: number) {
     return axios.patch(`${this.api}/${id}/liberar`);
   }
+
+  getReservas() {
+    return axios.get(this.api);
+  }
 }

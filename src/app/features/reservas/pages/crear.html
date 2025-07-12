@@ -1,1 +1,31 @@
-<p>crear works!</p>
+<div class="container mt-4">
+  <h2>Crear Reserva</h2>
+
+  <form (ngSubmit)="crear()" class="mt-3">
+    <div class="mb-3">
+      <label class="form-label">Sala:</label>
+      <select [(ngModel)]="salaId" name="salaId" class="form-select" required>
+        <option *ngFor="let sala of salas" [value]="sala.id">
+          {{ sala.nombre }} ({{ sala.ubicacion }})
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Inicio:</label>
+      <input type="datetime-local" [(ngModel)]="inicio" name="inicio" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Fin:</label>
+      <input type="datetime-local" [(ngModel)]="fin" name="fin" class="form-control" required />
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Reservar</button>
+    <a class="btn btn-secondary ms-2" routerLink="/salas">Cancelar</a>
+  </form>
+</div>

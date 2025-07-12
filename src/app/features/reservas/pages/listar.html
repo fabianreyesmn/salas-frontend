@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <h2>Reservas Activas</h2>
+
+  <a class="btn btn-primary mb-3" routerLink="/reservas/crear">Crear Reserva</a>
+
+  <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }}</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <table class="table table-striped" *ngIf="reservas.length > 0">
+    <thead>
+      <tr>
+        <th>Sala</th>
+        <th>Inicio</th>
+        <th>Fin</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of reservas">
+        <td>{{ r.sala?.nombre || r.salaId }}</td>
+        <td>{{ r.inicio | date:'short' }}</td>
+        <td>{{ r.fin | date:'short' }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="liberar(r.id)">Liberar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="reservas.length === 0" class="text-muted">No hay reservas activas.</div>
+</div>
