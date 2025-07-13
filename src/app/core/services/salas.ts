@@ -13,4 +13,8 @@ export class SalasService {
   crearSala(data: any) {
     return axios.post(this.api, data);
   }
+
+  eliminarSala(id: number) {
+    return axios.delete(`${this.api}/${id}`);
+  }
 }

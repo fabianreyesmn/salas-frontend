@@ -1,14 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ReservasService } from '../../../core/services/reservas';
 import { SalasService } from '../../../core/services/salas';
 
 @Component({
   selector: 'app-crear-reserva',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './crear.html',
   styleUrls: ['./crear.scss']
 })
@@ -47,7 +47,7 @@ export class Crear implements OnInit {
         fin: this.fin
       });
 
-      this.router.navigate(['/salas']);
+      this.router.navigate(['/reservas']);
     } catch (err: any) {
       console.error('Error al crear reserva', err);
       this.error = err?.response?.data?.error || 'Error desconocido';

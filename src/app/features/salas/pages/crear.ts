@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SalasService } from '../../../core/services/salas';
 
@@ -8,7 +8,7 @@ import { SalasService } from '../../../core/services/salas';
 @Component({
   selector: 'app-crear-sala',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './crear.html',
   styleUrls: ['./crear.scss']
 })

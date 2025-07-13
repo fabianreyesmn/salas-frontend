@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservasService } from '../../../core/services/reservas';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listar-reservas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './listar.html',
   styleUrls: ['./listar.scss']
 })

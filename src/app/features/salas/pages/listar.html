@@ -1,25 +1,45 @@
-<div class="container mt-4">
-  <h2>Salas de Juntas</h2>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+    <h2 class="mb-0">Salas de Juntas</h2>
+    <a class="btn btn-primary d-flex align-items-center gap-2" routerLink="/salas/crear">
+      <i class="bi bi-plus-circle"></i> Crear Sala
+    </a>
+  </div>
 
-  <a class="btn btn-primary mb-3" routerLink="/salas/crear">Crear Sala</a>
-
-  <!-- Tabla para mostrar las salas -->
-  <table class="table table-striped">
-    <!-- Encabezados de la tabla -->
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Ubicación</th>
-        <th>Capacidad</th>
-      </tr>
-    </thead>
-    <!-- Cuerpo de la tabla -->
-    <tbody>
-      <tr *ngFor="let sala of salas()">
-        <td>{{ sala.nombre }}</td>
-        <td>{{ sala.ubicacion }}</td>
-        <td>{{ sala.capacidad }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
+      <thead class="table-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+          <th>Capacidad</th>
+          <th>Estado</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sala of salas()">
+          <td>{{ sala.nombre }}</td>
+          <td>{{ sala.ubicacion }}</td>
+          <td>{{ sala.capacidad }}</td>
+          <td>
+            <span 
+              class="badge"
+              [ngClass]="{
+                'bg-success': sala.estado === 'disponible',
+                'bg-warning text-black': sala.estado !== 'disponible'
+              }"
+            >
+              {{ sala.estado === 'disponible' ? 'Sin Reservaciones' : 'Con Reservaciones' }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-outline-danger btn-sm" (click)="eliminarSala(sala.id)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

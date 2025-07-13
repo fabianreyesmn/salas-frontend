@@ -1,0 +1,37 @@
+.table {
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  thead {
+    font-weight: 600;
+    background-color: #f8f9fa;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #343a40;
+}
+
+.btn {
+  white-space: nowrap;
+}
+
+.alert {
+  font-size: 0.95rem;
+}
+
+.text-muted {
+  font-size: 1rem;
+  i {
+    vertical-align: middle;
+  }
+}

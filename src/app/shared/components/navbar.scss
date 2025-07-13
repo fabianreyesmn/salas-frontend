@@ -1,4 +1,23 @@
-.navbar .active {
-  font-weight: bold;
-  text-decoration: underline;
+.navbar {
+  font-size: 1rem;
+
+  .navbar-brand {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.3s ease;
+
+    &.active {
+      color: #ffffff !important;
+    }
+
+    &:hover {
+      color: #ffffffcc;
+    }
+  }
 }

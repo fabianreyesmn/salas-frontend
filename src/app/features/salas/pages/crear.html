@@ -1,25 +1,58 @@
-<div class="container mt-4">
-  <h2>Crear Nueva Sala</h2>
+<div class="container mt-5">
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body p-4">
+      <h2 class="mb-4 text-primary">Crear Nueva Sala</h2>
 
-  <!-- Formulario para crear una nueva sala -->
-  <form (ngSubmit)="crear()" class="mt-3">
-    <div class="mb-3">
-      <label class="form-label">Nombre:</label>
-      <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control" required />
+      <form (ngSubmit)="crear()">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            [(ngModel)]="nombre"
+            name="nombre"
+            class="form-control"
+            placeholder="Ej. Sala A"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="ubicacion" class="form-label">Ubicación</label>
+          <input
+            type="text"
+            id="ubicacion"
+            [(ngModel)]="ubicacion"
+            name="ubicacion"
+            class="form-control"
+            placeholder="Ej. Edificio 2, Piso 3"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="capacidad" class="form-label">Capacidad</label>
+          <input
+            type="number"
+            id="capacidad"
+            [(ngModel)]="capacidad"
+            name="capacidad"
+            class="form-control"
+            min="1"
+            placeholder="Ej. 20"
+            required
+          />
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+          <a class="btn btn-outline-secondary" routerLink="/salas">
+            <i class="bi bi-arrow-left"></i> Cancelar
+          </a>
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Crear Sala
+          </button>
+        </div>
+      </form>
     </div>
-
-    <div class="mb-3">
-      <label class="form-label">Ubicación:</label>
-      <input type="text" [(ngModel)]="ubicacion" name="ubicacion" class="form-control" required />
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Capacidad:</label>
-      <input type="number" [(ngModel)]="capacidad" name="capacidad" class="form-control" required />
-    </div>
-
-    <!-- Botones para enviar el formulario o cancelar -->
-    <button type="submit" class="btn btn-success">Crear</button>
-    <a class="btn btn-secondary ms-2" routerLink="/salas">Cancelar</a>
-  </form>
+  </div>
 </div>
