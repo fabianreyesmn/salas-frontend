@@ -10,7 +10,7 @@ import { SalasService } from '../../../core/services/salas';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './crear.html',
-  styleUrls: ['./crear.scss']
+  styleUrls: ['./crear.scss'],
 })
 export class Crear implements OnInit {
   // Servicios inyectados para manejar reservas y salas
@@ -46,10 +46,14 @@ export class Crear implements OnInit {
 
     // Validación
     try {
+      // Convertir a ISO en UTC para evitar desfases
+      const inicioUTC = new Date(this.inicio).toISOString();
+      const finUTC = new Date(this.fin).toISOString();
+
       await this.reservasService.crearReserva({
         salaId: this.salaId,
-        inicio: this.inicio,
-        fin: this.fin
+        inicio: inicioUTC,
+        fin: finUTC,
       });
 
       this.router.navigate(['/reservas']);
