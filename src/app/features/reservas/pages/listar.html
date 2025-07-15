@@ -82,11 +82,11 @@
             </h5>
             <p class="card-text mb-1">
               <strong>Inicio:</strong>
-              {{ formatearFecha(r.inicio) | date : "dd/MM/yyyy HH:mm" }}
+              {{ r.inicio | date : "dd/MM/yyyy HH:mm" }}
             </p>
             <p class="card-text mb-2">
               <strong>Fin:</strong>
-              {{ formatearFecha(r.fin) | date : "dd/MM/yyyy HH:mm" }}
+              {{ r.fin | date : "dd/MM/yyyy HH:mm" }}
             </p>
             <div class="d-flex justify-content-end">
               <button

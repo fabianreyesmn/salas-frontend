@@ -41,7 +41,7 @@ export class Listar implements OnInit {
 
     return this.reservas.filter((r) => {
       const inicioLocal = new Date(r.inicio);
-      const fechaLocal = inicioLocal.toLocaleDateString('sv-SE', {
+      const fechaLocal = inicioLocal.toLocaleDateString('es-MX', {
         timeZone: 'America/Mexico_City', // mostrar en CDMX
       });
       return fechaLocal === this.filtroFecha;
