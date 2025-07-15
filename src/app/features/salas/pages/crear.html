@@ -1,1 +1,61 @@
-<p>crear works!</p>
+<div class="container mt-5">
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body p-4">
+      <h2 class="mb-4 text-primary">Crear Nueva Sala</h2>
+
+      <!-- Formulario para crear una nueva sala -->
+      <form (ngSubmit)="crear()">
+        <!-- Campos para nombre, ubicación y capacidad de la sala -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            [(ngModel)]="nombre"
+            name="nombre"
+            class="form-control"
+            placeholder="Ej. Sala A"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="ubicacion" class="form-label">Ubicación</label>
+          <input
+            type="text"
+            id="ubicacion"
+            [(ngModel)]="ubicacion"
+            name="ubicacion"
+            class="form-control"
+            placeholder="Ej. Edificio 2, Piso 3"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="capacidad" class="form-label">Capacidad</label>
+          <input
+            type="number"
+            id="capacidad"
+            [(ngModel)]="capacidad"
+            name="capacidad"
+            class="form-control"
+            min="1"
+            placeholder="Ej. 20"
+            required
+          />
+        </div>
+
+        <!-- Botones de cancelar y crear sala -->
+        <div class="d-flex justify-content-end gap-2">
+          <a class="btn btn-outline-secondary" routerLink="/salas">
+            <i class="bi bi-arrow-left"></i> Cancelar
+          </a>
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Crear Sala
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

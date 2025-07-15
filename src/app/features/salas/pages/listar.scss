@@ -1,0 +1,100 @@
+h2 {
+  font-size: 1.8rem;
+  color: #343a40;
+}
+
+.btn {
+  white-space: nowrap;
+}
+
+.card {
+  border-radius: 0.75rem;
+  background-color: #f8f8f8;
+  transition: transform 0.2s ease;
+  overflow: hidden; // Para contener el diseño dentro de los bordes redondeados
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.card-img-top-placeholder {
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  background-color: #e0e0e0; // Color de fondo base
+
+  // Patrón de base con gradiente lineal
+  background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+
+  // Círculos de colores generados aleatoriamente
+  > div {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+
+    // Primer círculo
+    &:nth-child(1) {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #ffafbd, #ffc3a0);
+      top: -75px;
+      left: -50px;
+    }
+
+    // Segundo círculo
+    &:nth-child(2) {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #2193b0, #6dd5ed);
+      bottom: -50px;
+      right: -30px;
+    }
+
+    // Tercer círculo
+    &:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #cc2b5e, #753a88);
+      top: 20px;
+      right: 50px;
+      opacity: 0.5;
+    }
+
+    // Cuarto círculo (más pequeño)
+    &:nth-child(4) {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #f7971e, #ffd200);
+      bottom: 10px;
+      left: 30px;
+    }
+  }
+}
+
+.card-body {
+  padding-top: 1.25rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #343a40;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.65em;
+}
+
+.bg-disponible {
+  background-color: #88d8b0;
+  color: #000000;
+}
+
+.bg-no-disponible {
+  background-color: #ffda83;
+  color: #000000;
+}

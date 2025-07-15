@@ -1,1 +1,66 @@
-<p>crear works!</p>
+<div class="container mt-5">
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body p-4">
+      <h2 class="mb-4 text-primary">Crear Reserva</h2>
+
+      <!-- Formulario para crear una nueva reserva -->
+      <form (ngSubmit)="crear()">
+        <div class="mb-3">
+          <label for="sala" class="form-label">Sala</label>
+          <select
+            id="sala"
+            [(ngModel)]="salaId"
+            name="salaId"
+            class="form-select"
+            required
+          >
+            <option *ngFor="let sala of salas" [value]="sala.id">
+              {{ sala.nombre }} ({{ sala.ubicacion }})
+            </option>
+          </select>
+        </div>
+
+        <!-- Campos para fecha y hora de inicio y fin -->
+        <div class="mb-3">
+          <label for="inicio" class="form-label">Inicio</label>
+          <input
+            type="datetime-local"
+            id="inicio"
+            [(ngModel)]="inicio"
+            name="inicio"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="fin" class="form-label">Fin</label>
+          <input
+            type="datetime-local"
+            id="fin"
+            [(ngModel)]="fin"
+            name="fin"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <!-- Mensaje de error si hay algún problema -->
+        <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ error }}
+          <button type="button" class="btn-close" (click)="error = ''" aria-label="Close"></button>
+        </div>
+
+        <!-- Botones para cancelar o crear la reserva -->
+        <div class="d-flex justify-content-end gap-2">
+          <a class="btn btn-outline-secondary" routerLink="/reservas">
+            <i class="bi bi-x-circle"></i> Cancelar
+          </a>
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Reservar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
