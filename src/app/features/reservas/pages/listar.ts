@@ -39,9 +39,15 @@ export class Listar implements OnInit {
   reservasFiltradas() {
     if (!this.filtroFecha) return this.reservas;
 
-    return this.reservas.filter(
-      (r) => new Date(r.inicio).toISOString().split('T')[0] === this.filtroFecha
-    );
+    return this.reservas.filter((r) => {
+      const inicio = new Date(r.inicio);
+      const yyyy = inicio.getFullYear();
+      const mm = String(inicio.getMonth() + 1).padStart(2, '0');
+      const dd = String(inicio.getDate()).padStart(2, '0');
+      const fechaLocal = `${yyyy}-${mm}-${dd}`; // esto es en hora local
+
+      return fechaLocal === this.filtroFecha;
+    });
   }
 
   // Método para liberar una reserva
