@@ -39,11 +39,9 @@ export class Listar implements OnInit {
   reservasFiltradas() {
     if (!this.filtroFecha) return this.reservas;
 
-    return this.reservas.filter((r) => {
-      const inicioLocal = new Date(r.inicio);
-      const fechaLocal = inicioLocal.toLocaleDateString('es-MX'); // 'YYYY-MM-DD'
-      return fechaLocal === this.filtroFecha;
-    });
+    return this.reservas.filter(
+      (r) => new Date(r.inicio).toISOString().split('T')[0] === this.filtroFecha
+    );
   }
 
   // Método para liberar una reserva
