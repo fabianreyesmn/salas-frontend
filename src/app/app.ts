@@ -9,5 +9,6 @@ import { Navbar } from './shared/components/navbar';
   styleUrl: './app.scss'
 })
 export class App {
+  // Título de la aplicación como un signal
   protected readonly title = signal('salas-frontend');
 }

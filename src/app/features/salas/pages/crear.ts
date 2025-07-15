@@ -14,6 +14,7 @@ import { SalasService } from '../../../core/services/salas';
 })
 // Clase que maneja la creación de una sala
 export class Crear {
+  // Servicio inyectado para manejar las salas
   private salasService = inject(SalasService);
   private router = inject(Router);
 

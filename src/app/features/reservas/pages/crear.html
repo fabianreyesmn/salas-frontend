@@ -3,6 +3,7 @@
     <div class="card-body p-4">
       <h2 class="mb-4 text-primary">Crear Reserva</h2>
 
+      <!-- Formulario para crear una nueva reserva -->
       <form (ngSubmit)="crear()">
         <div class="mb-3">
           <label for="sala" class="form-label">Sala</label>
@@ -19,6 +20,7 @@
           </select>
         </div>
 
+        <!-- Campos para fecha y hora de inicio y fin -->
         <div class="mb-3">
           <label for="inicio" class="form-label">Inicio</label>
           <input
@@ -43,11 +45,13 @@
           />
         </div>
 
+        <!-- Mensaje de error si hay algún problema -->
         <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
           {{ error }}
           <button type="button" class="btn-close" (click)="error = ''" aria-label="Close"></button>
         </div>
 
+        <!-- Botones para cancelar o crear la reserva -->
         <div class="d-flex justify-content-end gap-2">
           <a class="btn btn-outline-secondary" routerLink="/reservas">
             <i class="bi bi-x-circle"></i> Cancelar

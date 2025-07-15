@@ -1,45 +1,99 @@
 <div class="container mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+  <div class="d-flex align-items-center mb-4 flex-wrap gap-3">
     <h2 class="mb-0">Salas de Juntas</h2>
-    <a class="btn btn-primary d-flex align-items-center gap-2" routerLink="/salas/crear">
-      <i class="bi bi-plus-circle"></i> Crear Sala
-    </a>
   </div>
 
-  <div class="table-responsive">
-    <table class="table table-hover align-middle shadow-sm rounded overflow-hidden">
-      <thead class="table-light">
-        <tr>
-          <th>Nombre</th>
-          <th>Ubicación</th>
-          <th>Capacidad</th>
-          <th>Estado</th>
-          <th class="text-center">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let sala of salas()">
-          <td>{{ sala.nombre }}</td>
-          <td>{{ sala.ubicacion }}</td>
-          <td>{{ sala.capacidad }}</td>
-          <td>
-            <span 
+  <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div class="d-flex align-items-end flex-wrap gap-3">
+      <!-- Filtros para las salas -->
+      <div>
+        <label for="filtroEstado" class="form-label mb-1">Estado</label>
+        <select
+          id="filtroEstado"
+          class="form-select mb-3"
+          [(ngModel)]="filtroEstado"
+        >
+        <!-- Opciones de filtro para el estado de las salas -->
+          <option value="">Todos</option>
+          <option value="disponible">Sin Reservaciones</option>
+          <option value="no-disponible">Con Reservaciones</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="filtroCapacidad" class="form-label mb-1"
+          >Capacidad mínima</label
+        >
+        <input
+          id="filtroCapacidad"
+          type="number"
+          class="form-control mb-3"
+          [(ngModel)]="filtroCapacidad"
+          min="0"
+        />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <a
+        class="btn btn-primary d-flex align-items-center gap-2"
+        routerLink="/salas/crear"
+      >
+        <i class="bi bi-plus-circle"></i> Crear Sala
+      </a>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let sala of salasFiltradas()">
+      <!-- Tarjeta para cada sala -->
+      <div class="card h-100 shadow-sm">
+        <div class="card-img-top-placeholder">
+          <!-- Círculos para el diseño del card -->
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <!-- Contenido de la tarjeta con información de la sala -->
+        <div class="card-body">
+          <h5 class="card-title mb-2">{{ sala.nombre }}</h5>
+          <p class="card-text mb-1">
+            <strong>Id:</strong> {{ sala.id }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Ubicación:</strong> {{ sala.ubicacion }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Capacidad:</strong> {{ sala.capacidad }}
+          </p>
+          <p class="card-text mb-2">
+            <span
               class="badge"
               [ngClass]="{
-                'bg-success': sala.estado === 'disponible',
-                'bg-warning text-black': sala.estado !== 'disponible'
+                'bg-disponible': sala.estado === 'disponible',
+                'bg-no-disponible': sala.estado !== 'disponible'
               }"
             >
-              {{ sala.estado === 'disponible' ? 'Sin Reservaciones' : 'Con Reservaciones' }}
+              {{
+                sala.estado === "disponible"
+                  ? "Sin Reservaciones"
+                  : "Con Reservaciones"
+              }}
             </span>
-          </td>
-          <td class="text-center">
-            <button class="btn btn-outline-danger btn-sm" (click)="eliminarSala(sala.id)">
+          </p>
+          <!-- Botón para eliminar la sala -->
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="eliminarSala(sala.id)"
+            >
               <i class="bi bi-trash"></i> Eliminar
             </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <br /><br />
 </div>

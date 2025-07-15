@@ -13,21 +13,24 @@ import { SalasService } from '../../../core/services/salas';
   styleUrls: ['./crear.scss']
 })
 export class Crear implements OnInit {
+  // Servicios inyectados para manejar reservas y salas
   private reservasService = inject(ReservasService);
   private salasService = inject(SalasService);
   private router = inject(Router);
 
   salas: any[] = [];
-
+  // Propiedades del formulario
   salaId: number | null = null;
   inicio: string = '';
   fin: string = '';
   error: string = '';
 
+  // Método que se ejecuta al iniciar el componente
   ngOnInit(): void {
     this.obtenerSalas();
   }
 
+  // Método para obtener las salas disponibles
   async obtenerSalas() {
     try {
       const res = await this.salasService.getSalas();
@@ -37,9 +40,11 @@ export class Crear implements OnInit {
     }
   }
 
+  // Método para crear una nueva reserva
   async crear() {
     this.error = '';
 
+    // Validación
     try {
       await this.reservasService.crearReserva({
         salaId: this.salaId,
