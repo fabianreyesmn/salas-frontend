@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && ng run salas-frontend:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:salas-frontend": "node dist/salas-frontend/server/server.mjs"
